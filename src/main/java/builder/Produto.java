@@ -20,25 +20,17 @@ public class Produto {
     private double largura;
     private double profundidade;
 
-    Produto(long id, String titulo, String descricao, String marca, String modelo, int estoque, double preco, LocalDate dataCadastro, LocalDate dataUltimaAtualizacao, String urlFoto, String categoria, Vendedor vendedor, double peso, double altura, double largura, double profundidade) {
-        this.id = id;
+    public Produto(String titulo, String descricao, String marca, String modelo, double preco, LocalDate dataCadastro, LocalDate dataUltimaAtualizacao, String categoria, Vendedor vendedor) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.marca = marca;
         this.modelo = modelo;
-        this.estoque = estoque;
         this.preco = preco;
         this.dataCadastro = dataCadastro;
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
-        this.urlFoto = urlFoto;
         this.categoria = categoria;
         this.vendedor = vendedor;
-        this.peso = peso;
-        this.altura = altura;
-        this.largura = largura;
-        this.profundidade = profundidade;
     }
-
 
     public long getId() {
         return id;
@@ -93,6 +85,9 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
+        if (preco <= 0){
+            throw new IllegalArgumentException("Preço deve ser maior que zero.");
+        }
         this.preco = preco;
     }
 
@@ -101,6 +96,9 @@ public class Produto {
     }
 
     public void setDataCadastro(LocalDate dataCadastro) {
+        if (dataCadastro.isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("A data não pode ser menor que a atual.");
+        }
         this.dataCadastro = dataCadastro;
     }
 
@@ -109,6 +107,9 @@ public class Produto {
     }
 
     public void setDataUltimaAtualizacao(LocalDate dataUltimaAtualizacao) {
+        if (dataUltimaAtualizacao.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("A data não pode ser menor que a atual.");
+        }
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 

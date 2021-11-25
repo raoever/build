@@ -9,9 +9,16 @@ public class Principal {
         LocalDate dataCadastro = LocalDate.of(2021, 11,3);
         LocalDate dataAtualizacao = LocalDate.of(2021, 11, 3);
         Vendedor vendedor = new Vendedor(1, "Joao");
-        Produto produto = new ProdutoBuilder("titulo", "descrição", 100.0, dataCadastro, dataAtualizacao,"categoria", vendedor)
-                .setId(1)
-                .setMarcaModelo("marca", "modelo")
+        Produto produto = new ProdutoBuilder()
+                .setTitulo("Celular")
+                .setDescricao("Galaxy")
+                .setMarca("Samsung")
+                .setModelo("S20")
+                .setPreco(5000)
+                .setDataCadastro(LocalDate.now())
+                .setDataUltimaAtualizacao(LocalDate.now())
+                .setCategoria("Eletro portátil")
+                .setVendedor(vendedor)
                 .createProduto();
         System.out.println(produto);
     }

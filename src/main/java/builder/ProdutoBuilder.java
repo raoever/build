@@ -3,77 +3,62 @@ package builder;
 import java.time.LocalDate;
 
 public class ProdutoBuilder {
-    private long id;
     private String titulo;
     private String descricao;
     private String marca;
     private String modelo;
-    private int estoque;
     private double preco;
     private LocalDate dataCadastro;
     private LocalDate dataUltimaAtualizacao;
-    private String urlFoto;
     private String categoria;
     private Vendedor vendedor;
-    private double peso;
-    private double altura;
-    private double largura;
-    private double profundidade;
 
-    //obrigatórios
-    public ProdutoBuilder(String titulo, String descricao, double preco, LocalDate dataCadastro, LocalDate dataUltimaAtualizacao, String categoria, Vendedor vendedor) {
+    public ProdutoBuilder setTitulo(String titulo) {
         this.titulo = titulo;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.dataCadastro = dataCadastro;
-        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
-        this.categoria = categoria;
-        this.vendedor = vendedor;
+        return this;
     }
 
-    //atributos em conjunto
-    public ProdutoBuilder setMarcaModelo(String marca, String modelo) {
+    public ProdutoBuilder setDescricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    public ProdutoBuilder setMarca(String marca) {
         this.marca = marca;
+        return this;
+    }
+
+    public ProdutoBuilder setModelo(String modelo) {
         this.modelo = modelo;
         return this;
     }
 
-    public ProdutoBuilder setId(long id) {
-        this.id = id;
+    public ProdutoBuilder setPreco(double preco) {
+        this.preco = preco;
         return this;
     }
 
-    public ProdutoBuilder setEstoque(int estoque) {
-        this.estoque = estoque;
+    public ProdutoBuilder setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
         return this;
     }
 
-    public ProdutoBuilder setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
+    public ProdutoBuilder setDataUltimaAtualizacao(LocalDate dataUltimaAtualizacao) {
+        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
         return this;
     }
 
-    public ProdutoBuilder setPeso(double peso) {
-        this.peso = peso;
+    public ProdutoBuilder setCategoria(String categoria) {
+        this.categoria = categoria;
         return this;
     }
 
-    public ProdutoBuilder setAltura(double altura) {
-        this.altura = altura;
-        return this;
-    }
-
-    public ProdutoBuilder setLargura(double largura) {
-        this.largura = largura;
-        return this;
-    }
-
-    public ProdutoBuilder setProfundidade(double profundidade) {
-        this.profundidade = profundidade;
+    public ProdutoBuilder setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
         return this;
     }
 
     public Produto createProduto() {
-        return new Produto(id, titulo, descricao, marca, modelo, estoque, preco, dataCadastro, dataUltimaAtualizacao, urlFoto, categoria, vendedor, peso, altura, largura, profundidade);
+        return new Produto(titulo, descricao, marca, modelo, preco, dataCadastro, dataUltimaAtualizacao, categoria, vendedor);
     }
 }
